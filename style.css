@@ -14,9 +14,13 @@ button{
     font-size: 12px;
 }
 
-/* .list-contianer {
-    background:rgb(214, 191, 191);
-} */
+.list-name{
+    cursor: pointer;
+}
+
+.active-list{
+    font-weight: 800;
+}
 
 .task{
     margin-bottom: 5px;

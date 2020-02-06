@@ -70,6 +70,13 @@ tasksContainer.addEventListener('click', (e)=>{
         selectedTask.complete = e.target.checked;
         render();
     }
+
+    if(e.target.className == 'delete'){
+        const selectedList = lists.find(list => list.id == selectedListID)
+        selectedList.tasks = selectedList.tasks.filter(list => list.id != e.target.parentElement.id)
+        console.log(e.target.parentElement.id)
+        render();
+    }
 })
 
 
@@ -88,12 +95,13 @@ deleteListButton.addEventListener('click', () => {
 
 
 
+
 // ***** Functions *****
 
 function createList(listName) {
     let id = Date.now().toString();
     selectedListID = id;
-    return { id: id, name: listName, tasks: [{id:1, name: 'test', complete: false}] }
+    return { id: id, name: listName, tasks: [] }
 }
 
 function createTask(taskName){
@@ -129,7 +137,8 @@ function renderTasks(selectedList){
         const label = taskElement.querySelector('label');
         label.htmlFor = task.id;
         label.append(task.name);
-
+        const parentDivElement = taskElement.querySelector('div');
+        parentDivElement.id = task.id;
         tasksContainer.appendChild(taskElement);
     })
 }
