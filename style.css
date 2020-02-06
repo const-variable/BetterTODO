@@ -1,0 +1,28 @@
+#root{
+    font-family: 'Roboto', sans-serif;
+    width: 20%;
+}
+
+.add-list{
+    padding: 2px;
+    border: 1px solid #000;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+/* .list-contianer {
+    background:rgb(214, 191, 191);
+} */
+
+.task{
+    margin-bottom: 5px;
+}
+
+.delete{
+    border-radius: 5px;
+    margin-left: 2px;
+}
+
+.new-task-creator{
+    margin-top: 10px;
+}
