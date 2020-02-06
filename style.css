@@ -1,6 +1,10 @@
-#root{
+/* #root{
     font-family: 'Roboto', sans-serif;
     width: 20%;
+} */
+
+button{
+    cursor: pointer;
 }
 
 .add-list{
@@ -21,6 +25,10 @@
 .delete{
     border-radius: 5px;
     margin-left: 2px;
+}
+
+.delete-stuff {
+    margin-top: 5px;
 }
 
 .new-task-creator{
