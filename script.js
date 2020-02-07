@@ -25,6 +25,7 @@ const newTaskForm = document.querySelector('[data-new-task-form]');
 const newTaskInput = document.querySelector('[data-new-task-input]');
 
 let lists = [
+    { id: 1, name: 'Home', tasks: [{ id: 1, name: 'task1', complete: false },{ id: 2, name: 'task2', complete: false }] },
     { id: 2, name: 'Office', tasks: [{ id: 1, name: 'Complete todo', complete: true }] },
     // { id: 3, name: 'Personal', tasks:[] },
 ];
@@ -147,13 +148,23 @@ function render() {
 function renderTasks(selectedList) {
     selectedList.tasks.forEach(task => {
         const taskElement = document.importNode(taskTemplate.content, true);
+        
         const checkBox = taskElement.querySelector('input');
         checkBox.id = task.id;
         checkBox.checked = task.complete;
+
         const label = taskElement.querySelector('label');
         label.htmlFor = task.id;
-        label.append(task.name);
-        label.contentEditable = true;
+        
+        if(task.complete){
+            const strike = document.createElement('s');
+            strike.textContent = task.name; 
+            label.append(strike);
+        } else {
+            label.contentEditable = true;
+            label.append(task.name);
+        }
+
         const parentDivElement = taskElement.querySelector('div');
         parentDivElement.id = task.id;
         tasksContainer.appendChild(taskElement);
