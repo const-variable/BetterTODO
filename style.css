@@ -3,8 +3,74 @@
     width: 20%;
 } */
 
+body{
+    font-size: 20px;
+}
+
 button{
     cursor: pointer;
+    border-radius: 3px;
+}
+
+h2{
+    padding: 0px;
+    margin:0px;
+}
+
+.main-container{
+    height: 100vh;
+    display: flex;
+   
+}
+
+.new-list, .new-task{
+    height: 30px;
+    margin-right: 3px;
+
+}
+
+.list-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between ;
+    padding: 10px;
+    /* margin-right: 10px; */
+    width: 15%;
+    border-right: 1px solid rgb(85, 85, 85);
+}
+
+form[data-new-list-form]{
+    display: flex;
+}
+
+form[data-new-task-form]{
+    display: flex;
+}
+
+.new-list{
+    width: 100%;
+}
+
+.new-task{
+    width: 15%;
+}
+
+
+.todo-list{
+    padding: 10px;
+    width: 85%;
+}
+
+/* .hr-line{
+    margin: 0 -20px !important;
+} */
+
+.todo-header{
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    padding: 15px;
+    /* border-bottom: 1px solid rgb(158, 158, 158); */
 }
 
 .add-list{
@@ -22,17 +88,35 @@ button{
     font-weight: 800;
 }
 
-.task{
-    margin-bottom: 5px;
+.todo-lower-part{
+    margin: 20px;
+    width: 100%;
+    height: auto;
 }
+
+.tasks-list-title{
+    margin-top: 30px;
+}
+
+.tasks{
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+
 
 .delete{
     border-radius: 5px;
     margin-left: 2px;
+    border: 1px solid;
+    padding: 3px;
+    font-size: 12px;
 }
 
 .delete-stuff {
-    margin-top: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+    
 }
 
 .new-task-creator{

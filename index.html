@@ -13,27 +13,34 @@
 </head>
 
 <body>
-
-    <div class="all-tasks">
-        <h2 class="tasks-list-title">My lists</h2>
-        <ul class="tasks-list" data-lists> 
-            <!-- <li class="list-name">Home</li>
+    <div class="main-container">
+        <div class="list-container">
+            <div class="list-body">
+                <h2 class="tasks-list-title">My Lists</h2>
+                <ul class="tasks-list" data-lists>
+                    <!-- <li class="list-name">Home</li>
             <li class='list-name'>Office</li>
             <li class='list-name'>Personal</li> -->
-        </ul>
-        <form action="" data-new-list-form>
-            <input type="text" class="new-list" placeholder="Enter list name" aria-label="new list name" data-new-list-input />
-            <button class="btn create" aria-label="create new list">+</button>
-        </form>
-    </div>
-    <div class="todo-list" data-todo-container> 
-        <div class="todo-header">
-            <h2 class="list-title"  data-todo-list-title>Home</h2>
+                </ul>
+            </div>
+            <form action="" data-new-list-form>
+                <input type="text" class="new-list" placeholder="Enter list name" aria-label="new list name"
+                    data-new-list-input />
+                <button class="btn create" aria-label="create new list">Add</button>
+            </form>
         </div>
-
-        <div class="todo-body">
-            <div class="tasks" data-tasks-container>
-                <!-- <div class="task">
+        <div class="todo-list" data-todo-container>
+            <div class="todo-header">
+                <h2 class="list-title" data-todo-list-title>Home</h2>
+                <div class="delete-stuff">
+                    <div class="btn delete" data-delete-list-button>Delete list</div>
+                </div>
+            </div>
+            <hr class="hr-line">
+            <div class="todo-lower-part">
+            <div class="todo-body">
+                <div class="tasks" data-tasks-container>
+                    <!-- <div class="task">
                     <input type="checkbox" id="task-1" />
                     <label for="task-1">Repair Living room fan</label>
                     <button class='delete'>Remove</button>
@@ -43,21 +50,21 @@
                     <label for="task-2">Clean the backyard</label>
                     <button class='delete'>Remove</button>
                 </div> -->
+                </div>
+            </div>
+
+            <div class="new-task-creator">
+                <form action="" data-new-task-form>
+                    <input type="text" class="new-task" placeholder="Enter new task" aria-label="Enter new task"
+                        data-new-task-input />
+                    <button class="btn create" aria-label="create new task">Add</button>
+                </form>
             </div>
         </div>
-
-        <div class="new-task-creator">
-            <form action="" data-new-task-form>
-                <input type="text" class="new task" placeholder="Enter new task" aria-label="Enter new task" data-new-task-input />
-                <button class="btn create" aria-label="create new task">+</button>
-            </form>
+            <!-- <div class="delete-stuff">
+                <div class="btn delete" data-delete-list-button>Delete list</div>
+            </div> -->
         </div>
-
-        <div class="delete-stuff">
-            <!-- <button class="btn delete">Clear completed tasks</button> -->
-            <div class="btn delete" data-delete-list-button>Delete list</div>
-        </div>
-
     </div>
     <template id="task-template">
         <div class="tasks">

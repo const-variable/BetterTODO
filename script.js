@@ -25,8 +25,8 @@ const newTaskForm = document.querySelector('[data-new-task-form]');
 const newTaskInput = document.querySelector('[data-new-task-input]');
 
 let lists = [
-    { id: 1, name: 'Home', tasks: [{ id: 1, name: 'task1', complete: false },{ id: 2, name: 'task2', complete: false }] },
-    { id: 2, name: 'Office', tasks: [{ id: 1, name: 'Complete todo', complete: true }] },
+    // { id: 1, name: 'Home', tasks: [{ id: 1, name: 'task1', complete: false },{ id: 2, name: 'task2', complete: false }] },
+    // { id: 2, name: 'Office', tasks: [{ id: 1, name: 'Complete todo', complete: true }] },
     // { id: 3, name: 'Personal', tasks:[] },
 ];
 
@@ -102,7 +102,16 @@ listsContainer.addEventListener('click', (e) => {
         selectedListID = e.target.dataset.listId;
     }
     render();
-})
+});
+
+// listsContainer.addEventListener('dblclick', e =>{
+//     console.log('checl',e)
+//     alert('Wew, I said double click on a task, not list.');
+//     // console.log(e.target);
+//     // if(e.target.tagName.toLowerCase()=='li'){
+//     //     console.log("-_-, I said double click on a task, this is list.")
+//     // }
+// });
 
 deleteListButton.addEventListener('click', () => {
     lists = lists.filter(list => list.id !== selectedListID)
@@ -195,3 +204,4 @@ function clearElement(element) {
 }
 
 render();
+alert('Double click on a task to edit it');
