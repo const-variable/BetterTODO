@@ -25,13 +25,12 @@ const newTaskForm = document.querySelector('[data-new-task-form]');
 const newTaskInput = document.querySelector('[data-new-task-input]');
 
 let lists = [
-    // { id: 2, name: 'Office', tasks:[] },
+    { id: 2, name: 'Office', tasks: [{ id: 1, name: 'Complete todo', complete: true }] },
     // { id: 3, name: 'Personal', tasks:[] },
 ];
 
 let selectedListID = null;
-
-
+let updatedContent = '';
 
 //  ***** eventListeners ****
 
@@ -63,25 +62,42 @@ newTaskForm.addEventListener('submit', (e) => {
 
 })
 
-tasksContainer.addEventListener('click', (e)=>{
-    if(e.target.tagName.toLowerCase() == 'input'){
+tasksContainer.addEventListener('click', (e) => {
+    if (e.target.tagName.toLowerCase() == 'input') {
         const selectedList = lists.find(list => list.id == selectedListID)
         const selectedTask = selectedList.tasks.find(task => task.id == e.target.id);
         selectedTask.complete = e.target.checked;
         render();
     }
 
-    if(e.target.className == 'delete'){
+    if (e.target.className == 'delete') {
         const selectedList = lists.find(list => list.id == selectedListID)
         selectedList.tasks = selectedList.tasks.filter(list => list.id != e.target.parentElement.id)
         console.log(e.target.parentElement.id)
         render();
     }
+
 })
 
+// tasksContainer.addEventListener('input', (e) => {
+//     if (e.target.tagName.toLowerCase() == 'label') {
+//         console.log("content", e.target.textContent);
+//     }
+// })
+
+tasksContainer.addEventListener('focusout', e => {
+    if (e.target.tagName.toLowerCase() == 'label') {
+        console.log("tasks is focused out", e.target.textContent);
+        const selectedList = lists.find(list => list.id == selectedListID)
+        const selectedTask = selectedList.tasks.find(list => list.id == e.target.htmlFor)
+        console.log(selectedTask);
+        selectedTask.name = e.target.textContent;
+        render();
+    }
+})
 
 listsContainer.addEventListener('click', (e) => {
-    if(e.target.tagName.toLowerCase() == 'li'){
+    if (e.target.tagName.toLowerCase() == 'li') {
         selectedListID = e.target.dataset.listId;
     }
     render();
@@ -91,7 +107,7 @@ deleteListButton.addEventListener('click', () => {
     lists = lists.filter(list => list.id !== selectedListID)
     selectedListID = null;
     render();
-})  
+})
 
 
 
@@ -104,18 +120,18 @@ function createList(listName) {
     return { id: id, name: listName, tasks: [] }
 }
 
-function createTask(taskName){
+function createTask(taskName) {
     let id = Date.now().toString();
-    return {id: id, name: taskName, complete: false} 
+    return { id: id, name: taskName, complete: false }
 }
 
 function render() {
     clearElement(listsContainer);
     renderLists();
-   
+
     const selectedList = lists.find(element => element.id == selectedListID)
-    
-    if(selectedListID == null){
+
+    if (selectedListID == null) {
         listDisplayContainer.style.display = 'none';
     } else {
         listDisplayContainer.style.display = '';
@@ -128,7 +144,7 @@ function render() {
 }
 
 
-function renderTasks(selectedList){
+function renderTasks(selectedList) {
     selectedList.tasks.forEach(task => {
         const taskElement = document.importNode(taskTemplate.content, true);
         const checkBox = taskElement.querySelector('input');
@@ -137,22 +153,23 @@ function renderTasks(selectedList){
         const label = taskElement.querySelector('label');
         label.htmlFor = task.id;
         label.append(task.name);
+        label.contentEditable = true;
         const parentDivElement = taskElement.querySelector('div');
         parentDivElement.id = task.id;
         tasksContainer.appendChild(taskElement);
     })
 }
 
-function renderLists(){
+function renderLists() {
     lists.forEach(element => {
         const createdElement = document.createElement('li');
         createdElement.classList = 'list-name';
         createdElement.dataset.listId = element.id;
         createdElement.textContent = element.name;
-        
+
 
         //adding a active class to selected list
-        if(element.id == selectedListID){
+        if (element.id == selectedListID) {
             createdElement.classList.add('active-list');
         }
 
